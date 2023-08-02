@@ -12,7 +12,7 @@ let produtos = [
   {
     nome: "Teclado",
     categoria: "informática",
-    preco: 350 
+    preco: 350
   },
   {
     nome: "Aparelho de som",
@@ -66,18 +66,9 @@ let produtos = [
   }
 ]
 
-/* PASSO A PASSO
-  - Perguntar qual é o item que o usuário quer pesquisar
-  - Percorrer a lista verificando se o nome de algum produto é igual a pesquisa do usuário
-  - Colocar na tela as informações do produto encontrado ou colocar que o produto não foi encontrado
-*/
 
 let pesquisa = prompt("Qual produto você deseja pesquisar?");
-const nomeProduto = document.getElementById("nome-produto");
-let precoProduto = document.querySelector("#preco-produto");
-const categoriaProduto = document.getElementById("categoria-produto");
 
-// FORMA 1
 for (let produto of produtos) {
   if (produto.nome === pesquisa) {
     nomeProduto.innerHTML = produto.nome;
@@ -86,32 +77,4 @@ for (let produto of produtos) {
   }
 }
 
-// FORMA 2
-for (let i = 0; i < produtos.length; i++) {
-  if (produtos[i].nome === pesquisa) {
-    nomeProduto.innerHTML = produtos[i].nome;
-    precoProduto.innerHTML = produtos[i].preco;
-    categoriaProduto.innerHTML = produtos[i].categoria;
-  }
-}
 
-// FORMA 3
-function ehIgualAPesquisa(produto) {
-  return produto.nome === pesquisa;
-}
-
-let produtoEncontrado = produtos.filter(ehIgualAPesquisa)
-// filter devolve uma LISTA dos itens que passam no filtro
-nomeProduto.innerHTML = produtoEncontrado[0].nome;
-precoProduto.innerHTML = produtoEncontrado[0].preco;
-categoriaProduto.innerHTML = produtoEncontrado[0].categoria;
-
-// FORMA 4 
-let produtoEncontrado2 = produtos.find(function (produtoParametro) {
-  return produtoParametro.nome === pesquisa
-})
-// find devolve um único elemento que passa na verificação da callback, o primeiro se tiver mais que um
-
-nomeProduto.innerHTML = produtoEncontrado2.nome;
-precoProduto.innerHTML = produtoEncontrado2.preco;
-categoriaProduto.innerHTML = produtoEncontrado2.categoria;
